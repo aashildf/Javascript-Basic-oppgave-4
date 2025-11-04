@@ -304,12 +304,17 @@ function lagKalender(){
 
     // Lage 24 luker med for loop:
     for (let i = 1; i <= 24; i++){
-        const luke = document.createElement("div");
+      const luke = document.createElement("div");
       luke.classList.add("luke");
       luke.textContent = i; //viser tallet på luken
 
       // Klikk for å åpne luke:
       luke.addEventListener("click", () => åpneLuke(i, luke));
+
+      // Mouseleave: gå tilbake til normal størrelse
+      luke.addEventListener("mouseleave", () => {
+        luke.classList.remove("åpnet");
+      });
 
       kalender.appendChild(luke);
     }
@@ -330,20 +335,23 @@ function åpneLuke(dag, luke){
   const tilfeldigVare = varer[Math.floor(Math.random() * varer.length)];
   const rabatt = Math.floor(Math.random() * 40) + 10; //gir mellom 10 og 50% rabatt.
 
-// Tilfeldig rabattkode (f.eks: ARV23B)
-const kode = `${tilfeldigVare.kolleksjon
-  .split(" ")[0]
-  .toUpperCase()}${rabatt}${String.fromCharCode(
-  65 + Math.floor(Math.random() * 26)
-)}`;
+  // Tilfeldig rabattkode (f.eks: ARV23B)
+  const kode = `${tilfeldigVare.kolleksjon
+    .split(" ")[0]
+    .toUpperCase()}${rabatt}${String.fromCharCode(
+    65 + Math.floor(Math.random() * 26)
+  )}`;
 
   //Tømme tidligere innhold i luken
   luke.textContent = "";
 
-
   // Lager nytt element med ønsket tekst
   const tekstEl = document.createElement("p");
   tekstEl.textContent = `${rabatt}% rabatt på ${tilfeldigVare.navn}!`;
+  tekstEl.classList.add("rabatt"); // legger til animasjon
+  luke.appendChild(tekstEl);
+
+
 
   // // skrift-styling
   tekstEl.style.fontSize = "13px";
@@ -351,15 +359,13 @@ const kode = `${tilfeldigVare.kolleksjon
   tekstEl.style.color = "#000";
   tekstEl.style.textAlign = "center";
 
-//   rabattkode:
-const kodeEl = document.createElement("p");
-kodeEl.textContent = `bruk kode> ${kode}`;
-kodeEl.style.fontSize = "11px";
-kodeEl.style.color = "#333";
-kodeEl.style.fontStyle = "italic";
-kodeEl.style.marginTop = "8px";
-
-
+  //   rabattkode:
+  const kodeEl = document.createElement("p");
+  kodeEl.textContent = `Bruk kode: ${kode}`;
+  kodeEl.style.fontSize = "11px";
+  kodeEl.style.color = "#333";
+  kodeEl.style.fontStyle = "italic";
+  kodeEl.style.marginTop = "8px";
 
   luke.appendChild(tekstEl);
   luke.appendChild(kodeEl);
