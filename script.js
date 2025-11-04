@@ -377,7 +377,7 @@ function åpneLuke(dag, luke){
 lagKalender();
 
 
-// Ps: Ideen min til denne julekalenderen var at brukeren skulle få en tilfeldig rabatt på et tilfeldig produkt. Om dette var ver en virkelig nettbutikk måtte rabattkoden:
+// Ps: Ideen min er en julekalenderen til en nettbutikk, hvor brukeren skal få en tilfeldig rabatt på et tilfeldig produkt. Om dette var ver en virkelig nettbutikk måtte rabattkoden:
 
 // lagres på en server/database
 
