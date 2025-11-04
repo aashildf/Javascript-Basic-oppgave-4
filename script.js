@@ -396,4 +396,4 @@ lagKalender();
 // Kommunikasjon mellom frontend (din kalender) og backend via API (for eksempel fetch())
 
 
-// Sidne jeg ikke har lært disse tingene, har jeg or denne oppgaven bare laget en tilfeldig, visuell rabattkode når brukeren åpner en luke.
+// Sidne jeg ikke har lært disse tingene, har jeg for denne oppgaven bare laget en tilfeldig, visuell rabattkode når brukeren åpner en luke.
