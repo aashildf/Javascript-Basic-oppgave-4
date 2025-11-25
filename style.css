@@ -1,19 +1,19 @@
 *{
     margin: 0;
+    padding: 0;
    
 }
 
+
 body{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Playfair Display", Georgia, serif; 
     text-align: center;
     color: #f5e3e3;
     display: flex;
     flex-direction: column;
     align-items: center;
-    align-self: center;
     background-image: url("./christmas.tree.bg3.jpg");
     background-repeat: no-repeat; 
-    background-position: center top;
     background-size: contain; 
     background-position: center 150px;
     background-color: #bedee3;
@@ -21,6 +21,7 @@ body{
 }
 
 
+/* HEADER */
 
 .logo img {
   width: 130px;
@@ -35,8 +36,6 @@ body{
   left: 50%;
   transform: translateX(-50%);
   z-index: 3; 
-  
-  
 }   
 
 
@@ -63,27 +62,23 @@ h1{
     font-size: 40px;
     padding: 20px;
     color: #b0aeae;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: "Voga", Arial, Helvetica; 
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6));
 }
 
 header{
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: "Playfair Display", Arial, Helvetica; 
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 150px; 
-  width: 100%;          
-  max-width: none;      
+  width: 100%;               
   margin: 0;
   box-shadow:
     inset -4px -4px 8px rgba(0,0,0,0.15), /* mørkere nede/høyre */
     inset 4px 4px 8px rgba(255,255,255,0.6), /* lysere oppe/venstre */
     0 6px 12px rgba(0,0,0,0.25); 
-
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  padding: Opx 50px;
+  padding: 0px 50px;
   z-index: 2;
 }
 
@@ -96,16 +91,29 @@ header{
   position: absolute;
   top: 59px;
   right: 8%;
-  
   transition: all 0.3s ease; 
 }
 
+ .menu::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px; /* litt under teksten */
+  width: 0%;
+  height: 2px;
+  background-color: #222;
+  transition: width 0.3s ease;
+}
+
 .menu:hover{
-   color: #222;
+  color: #222;
   text-shadow: 0 0 6px rgba(255,255,255,0.7);
   transform: translateY(-2px);
-  transition: all 0.3s ease;
   }
+
+  .menu:hover::after {
+  width: 100%; /* linjen glir inn */
+}
 
 
   .cart{
@@ -115,30 +123,54 @@ header{
   transition: all 0.3s ease; 
   }
 
+  .cart::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px; /* litt under teksten */
+  width: 0%;
+  height: 2px;
+  background-color: #222;
+  transition: width 0.3s ease;
+}
+
   .cart:hover{
     color: #222;
-  text-shadow: 0 0 6px rgba(255,255,255,0.7);
-  transform: translateY(-2px);
-  transition: all 0.3s ease;
+  transform: translateY(-2px) ;
   }
 
 .menu, .cart {
-  font-size: 16px;
+  font-size: 1rem;
   cursor: pointer;
    z-index: 3;
-  color: #181818;
+  color: #715858
 }
+
+.cart:hover::after {
+  width: 100%; /* linjen glir inn */
+}
+
 
  .info{
   padding: 50px;
    font-family: "Playfair Display", Georgia, serif; 
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #2b2b2b; 
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #683535; 
   margin: 20px auto;
   max-width: 600px;
   text-shadow: 0 1px 2px rgba(255,255,255,0.6);
+  line-height: 1.4;         /* gir eleganse og lesbarhet */
+  letter-spacing: 0.5px;
  }
+
+.info::after {
+  content: "";
+  display: block;
+  width: 60%;
+  margin: 10px auto 0;
+  border-bottom: 2px dashed #715858; /* stiplet linje som spor */
+}
 
 /*------------------- KALENDER------------------- */
 
@@ -158,7 +190,6 @@ header{
 .luke {
   background: linear-gradient(145deg, #8b0000, #a00000);
   color: #f8f6f6;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
   cursor: url("https://copilot.microsoft.com/th/id/BCO.7e132e1f-12e6-4a5b-9001-04fa6798a060.png?h=32&w=32"), auto;
   font-weight: bold;
   font-size: 20px;
@@ -184,6 +215,17 @@ header{
   background-blend-mode: overlay;
 }
 
+.luke-ikon {
+  width: 40px;
+  height: 40px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.luke-tall {
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.9); /* kun tallet får skygge */
+}
+
 @keyframes myAnimation {
   from { transform: translateY(0) scale(1); background-color: rgb(68, 98, 128); }
   to { transform: translateY(20px) scale(1.5); background-color: rgb(214, 239, 245); }
@@ -200,6 +242,7 @@ header{
 }
 
 
+
 .luke:hover {
   background: linear-gradient(145deg, #4f7aa2, #41829af7, #cee1f4);
   transform: translateY(-4px) scale(1.05);
@@ -208,13 +251,26 @@ header{
     inset 1px 1px 4px rgba(255, 255, 255, 0.4);
 }
 
+.kodeEl {
+  font-size: 11px;
+  color: #333;
+  font-style: italic;
+  margin-top: 8px;
+  text-align: center; /* valgfritt, hvis du vil ha midtstilt */
+}
+
 
 /* rabatten skal “slide inn” uten å forandre resten */
 .rabatt {
+  font-size: 11px;
+  color: black;
+  text-align: left;
   transform: translateY(20px);
   opacity: 0;
   transition: all 0.3s ease;
 }
+
+
 
 .åpnet .rabatt {
   transform: translateY(0);

@@ -306,14 +306,22 @@ function lagKalender(){
     for (let i = 1; i <= 24; i++){
       const luke = document.createElement("div");
       luke.classList.add("luke");
-      luke.textContent = i; //viser tallet på luken
+     
 
+      // For å kunne style tallet på luken separat
+      const tall = document.createElement("span");
+      tall.classList.add("luke-tall");
+      tall.textContent = i;
+
+      luke.appendChild(tall);
       // Klikk for å åpne luke:
       luke.addEventListener("click", () => åpneLuke(i, luke));
+
 
       // Mouseleave: gå tilbake til normal størrelse
       luke.addEventListener("mouseleave", () => {
         luke.classList.remove("åpnet");
+       
       });
 
       kalender.appendChild(luke);
@@ -342,30 +350,37 @@ function åpneLuke(dag, luke){
     65 + Math.floor(Math.random() * 26)
   )}`;
 
-  //Tømme tidligere innhold i luken
+  // //Tømme tidligere innhold i luken
   luke.textContent = "";
 
-  // Lager nytt element med ønsket tekst
+
+  // Overskrift
+  const headingEl = document.createElement("h3");
+  headingEl.textContent = `${dag}. `;
+  headingEl.classList.add("luke-heading");
+  luke.appendChild(headingEl);
+ 
+
+  // Lag bilde-element
+  const imgEl = document.createElement("img");
+  imgEl.src = "./images.png";
+  imgEl.alt = "Gaveikon";
+  imgEl.classList.add("luke-ikon");
+
+  // Sett inn bilde
+  headingEl.appendChild(imgEl);
+
+
+  // Lager nytt element med ønsket tekst, Produktnavn + rabatt
   const tekstEl = document.createElement("p");
-  tekstEl.textContent = `${rabatt}% rabatt på ${tilfeldigVare.navn}!`;
-  tekstEl.classList.add("rabatt"); // legger til animasjon
+  tekstEl.textContent = `Gratulerer! Du får ${rabatt}% rabatt på ${tilfeldigVare.navn}!`;
+  tekstEl.classList.add("rabatt");
   luke.appendChild(tekstEl);
-
-
-
-  // // skrift-styling
-  tekstEl.style.fontSize = "13px";
-  tekstEl.style.fontWeight = "thin";
-  tekstEl.style.color = "#000";
-  tekstEl.style.textAlign = "center";
 
   //   rabattkode:
   const kodeEl = document.createElement("p");
   kodeEl.textContent = `Bruk kode: ${kode}`;
-  kodeEl.style.fontSize = "11px";
-  kodeEl.style.color = "#333";
-  kodeEl.style.fontStyle = "italic";
-  kodeEl.style.marginTop = "8px";
+  kodeEl.classList.add("kodeEl"); // legg til klasse
 
   luke.appendChild(tekstEl);
   luke.appendChild(kodeEl);
@@ -396,4 +411,4 @@ lagKalender();
 // Kommunikasjon mellom frontend (din kalender) og backend via API (for eksempel fetch())
 
 
-// Sidne jeg ikke har lært disse tingene, har jeg for denne oppgaven bare laget en tilfeldig, visuell rabattkode når brukeren åpner en luke.
+// Siden jeg ikke har lært disse tingene, har jeg for denne oppgaven bare laget en tilfeldig, visuell rabattkode når brukeren åpner en luke.
