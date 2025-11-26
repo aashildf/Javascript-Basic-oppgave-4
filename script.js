@@ -389,6 +389,7 @@ function åpneLuke(dag, luke){
   luke.classList.add("åpnet");
 }
 
+
 lagKalender();
 
 
