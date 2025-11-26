@@ -339,6 +339,13 @@ function åpneLuke(dag, luke){
     return;
   }
 
+  // Hvis luken allerede er åpnet, gjør ingenting
+  if (luke.classList.contains("åpnet")) {
+    return;
+  }
+
+  
+
   // Trekke tilfeldig vare og rabatt
   const tilfeldigVare = varer[Math.floor(Math.random() * varer.length)];
   const rabatt = Math.floor(Math.random() * 40) + 10; //gir mellom 10 og 50% rabatt.
@@ -353,13 +360,11 @@ function åpneLuke(dag, luke){
   // //Tømme tidligere innhold i luken
   luke.textContent = "";
 
-
   // Overskrift
   const headingEl = document.createElement("h3");
   headingEl.textContent = `${dag}. `;
   headingEl.classList.add("luke-heading");
   luke.appendChild(headingEl);
- 
 
   // Lag bilde-element
   const imgEl = document.createElement("img");
@@ -369,7 +374,6 @@ function åpneLuke(dag, luke){
 
   // Sett inn bilde
   headingEl.appendChild(imgEl);
-
 
   // Lager nytt element med ønsket tekst, Produktnavn + rabatt
   const tekstEl = document.createElement("p");
