@@ -327,7 +327,7 @@ function lagKalender(){
       kalender.appendChild(luke);
     }
 }
-lagKalender();
+
 
 // Åpne luke:
 function åpneLuke(dag, luke){
