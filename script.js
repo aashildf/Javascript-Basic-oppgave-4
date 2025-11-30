@@ -298,7 +298,7 @@ const varer = [
   },
 ];
 
-// Lage kalenderen:
+// Lage kalender:
 function lagKalender(){
     const kalender = document.getElementById("calendar");
 
@@ -316,7 +316,7 @@ function lagKalender(){
 
 
 
-      // Legg til GIF-wrapper
+      // Legge til GIF-wrapper
       const gifWrapper = document.createElement("div");
       gifWrapper.classList.add("luke-gif-wrapper");
 
