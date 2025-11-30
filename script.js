@@ -306,7 +306,6 @@ function lagKalender(){
     for (let i = 1; i <= 24; i++){
       const luke = document.createElement("div");
       luke.classList.add("luke");
-     
 
       // For å kunne style tallet på luken separat
       const tall = document.createElement("span");
@@ -314,14 +313,27 @@ function lagKalender(){
       tall.textContent = i;
 
       luke.appendChild(tall);
+
+
+
+      // Legg til GIF-wrapper
+      const gifWrapper = document.createElement("div");
+      gifWrapper.classList.add("luke-gif-wrapper");
+
+      const gifEl = document.createElement("img");
+      gifEl.src = "./snowman.gif"; 
+      gifWrapper.appendChild(gifEl);
+
+      luke.appendChild(gifWrapper);
+
+
+
       // Klikk for å åpne luke:
       luke.addEventListener("click", () => åpneLuke(i, luke));
-
 
       // Mouseleave: gå tilbake til normal størrelse
       luke.addEventListener("mouseleave", () => {
         luke.classList.remove("åpnet");
-       
       });
 
       kalender.appendChild(luke);
