@@ -80,10 +80,6 @@ header{
     mask-image: linear-gradient(to top right, transparent 0%, black 60%);
 }
     
-    /* -webkit-mask-image: linear-gradient(to right, transparent 0%, black 40%);
-    mask-image: linear-gradient(to right, transparent 0%, black 40%); */
-/* } */
-
 
 
 
@@ -191,7 +187,7 @@ header{
 .luke {
   background: linear-gradient(145deg, #8b0000, #a00000);
   color: #f8f6f6;
-  cursor: url("https://copilot.microsoft.com/th/id/BCO.7e132e1f-12e6-4a5b-9001-04fa6798a060.png?h=32&w=32"), auto;
+  cursor: url(./wand-cursor.png) 0 0, auto;
   font-weight: bold;
   font-size: 20px;
   text-align: center;
